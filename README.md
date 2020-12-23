@@ -8,7 +8,7 @@ docker build -t <CONTAINER_NAME> .
 
 eg.
 ```
-`docker build -t ci-builder .`
+docker build -t ci-builder .
 ```
 
 ## How to run
@@ -20,6 +20,7 @@ eg.
 ```
 docker run --rm -t --volume=/home/foo/bar:/mnt/project ci-builder npm install
 ```
+
 
 Note!
 A different node version can be chosen by setting the "NODE_VERSION" build arg. Default is 14.15.3 (latest as time of writing)
