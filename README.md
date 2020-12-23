@@ -3,7 +3,7 @@ Docker image definition of node and chrom on a ubuntu 20.04 base
 
 ## How to build
 ```
-docker build -t **<CONTAINER_NAME>** .
+docker build -t <CONTAINER_NAME> .
 ```
 
 eg.
@@ -13,7 +13,7 @@ eg.
 
 ## How to run
 ```
-docker run --rm -t --volume=**<FULL_PATH_TO_LOCAL_PROJECT>**:/mnt/project **<CONTAINER_NAME>** **<CODE>**
+docker run --rm -t --volume=<FULL_PATH_TO_LOCAL_PROJECT>:/mnt/project <CONTAINER_NAME> <CODE>
 ```
 
 eg.
