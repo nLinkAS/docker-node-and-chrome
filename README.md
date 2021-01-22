@@ -1,32 +1,32 @@
 # docker-node-and-chrome
-Docker image definition of node and chrom on a ubuntu 20.04 base
+A Docker image definition of node and chrome
 
-## How to build
+## How to build the node environment
 ```
-docker build -t <CONTAINER_NAME> .
-```
+docker build -t <IMAGE_NAME> .
 
-eg.
-```
-docker build -t ci-builder .
+Example:
+docker build -t ci-build-env .
 ```
 
-## How to run
+## How to run the node environment
 ```
-docker run --rm -t --volume=<FULL_PATH_TO_LOCAL_PROJECT>:/mnt/project <CONTAINER_NAME> <CODE>
+docker run --rm -t --volume=<FULL_PATH_TO_LOCAL_PROJECT>:<IMAGE_PROJECT_PATH> --workdir="<IMAGE_PROJECT_PATH>"  --name <CONTAINER_NAME> <IMAGE_NAME>
+
+Example:
+docker run --rm -t --volume=/home/my-npm-project:/mnt/project --workdir="/mnt/project" --name ci-builder ci-build-env
 ```
 
-eg 1 - install npm project dependencies
+## How to run npm commands
 ```
-docker run --rm -t --volume=/home/my-nmp-project:/mnt/project ci-builder npm install
-```
+docker exec <CONTAINER_NAME> <NPM_COMMAND>
 
-eg 2 - build npm project
-```
-docker run --rm -t --volume=/home/my-nmp-project:/mnt/project ci-builder npm run build
-```
+Example (show npm version):
+docker exec ci-builder npm version
 
----
+Example (install npm dependencies):
+docker exec ci-builder npm install
 
-Note!
-A different node version can be chosen by setting the "NODE_VERSION" build arg. Default is 14.15.3 (latest as time of writing)
+Example (build npm project):
+docker exec ci-builder npm run build
+```
